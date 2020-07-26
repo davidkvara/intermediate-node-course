@@ -30,6 +30,13 @@ app.post("/users", (req, res) => {
   });
 });
 
+// READ list of all users.
+app.get("/users", (req, res) => {
+  User.find({}, "name email", (err, data) => {
+    sendResponse(res, err, data);
+  });
+});
+
 app
   .route("/users/:id")
 
